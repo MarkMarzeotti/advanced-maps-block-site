@@ -1,0 +1,12 @@
+<?php
+/**
+ * The sidebar containing the main widget area.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package Advanced Maps Block
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
