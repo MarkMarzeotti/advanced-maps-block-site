@@ -1,188 +1,201 @@
 <?php
 /**
- * Advanced Maps Block functions and definitions.
+ * Marzeotti Base functions and definitions
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package Advanced Maps Block
+ * @package Marzeotti_Base
  */
 
-if ( ! function_exists( 'amb_site_setup' ) ) :
+if ( ! function_exists( 'marzeotti_base_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
-	 *
-	 * Note that this function is hooked into the after_setup_theme hook, which
-	 * runs before the init hook. The init hook is too late for some features, such
-	 * as indicating support for post thumbnails.
-	 *
-	 * @author WDS
 	 */
-	function amb_site_setup() {
-		/**
+	function marzeotti_base_setup() {
+		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
-		 * If you're building a theme based on Advanced Maps Block, use a find and replace
-		 * to change 'advanced-maps-block' to the name of your theme in all the template files.
-		 * You will also need to update the Gulpfile with the new text domain
-		 * and matching destination POT file.
+		 * If you're building a theme based on Marzeotti Base, use a find and replace
+		 * to change 'marzeotti_base' to the name of your theme in all the template files.
 		 */
-		load_theme_textdomain( 'advanced-maps-block', get_template_directory() . '/languages' );
-
-		// Add default posts and comments RSS feed links to head.
-		add_theme_support( 'automatic-feed-links' );
+		load_theme_textdomain( 'marzeotti_base', get_template_directory() . '/languages' );
 
 		/**
-		 * Let WordPress manage the document title.
-		 * By adding theme support, we declare that this theme does not use a
-		 * hard-coded <title> tag in the document head, and expect WordPress to
-		 * provide it for us.
+		 * Add default posts and comments RSS feed links to head.
+		 */
+		add_theme_support( 'automatic-feed-links' );
+
+		/*
+		 * Enable the title tag controlled by WordPress.
 		 */
 		add_theme_support( 'title-tag' );
 
-		/**
+		/*
 		 * Enable support for Post Thumbnails on posts and pages.
 		 *
 		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		 */
 		add_theme_support( 'post-thumbnails' );
-		add_image_size( 'full-width', 1920, 1080, false );
 
-		// Register navigation menus.
+		/*
+		 * Register menu locations.
+		 *
+		 * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
+		 */
 		register_nav_menus(
 			array(
-				'primary' => esc_html__( 'Primary Menu', 'advanced-maps-block' ),
-				'mobile'  => esc_html__( 'Mobile Menu', 'advanced-maps-block' ),
+				'primary-menu' => esc_html__( 'Primary Menu', 'marzeotti_base' ),
+				'footer-menu'  => esc_html__( 'Footer Menu', 'marzeotti_base' ),
 			)
 		);
 
 		/**
-		 * Switch default core markup for search form, comment form, and comments
-		 * to output valid HTML5.
+		 * Add support for core custom logo.
+		 *
+		 * @link https://codex.wordpress.org/Theme_Logo
 		 */
 		add_theme_support(
-			'html5',
-			array(
-				'search-form',
-				'comment-form',
-				'comment-list',
-				'gallery',
-				'caption',
-			)
-		);
-
-		// Set up the WordPress core custom background feature.
-		add_theme_support(
-			'custom-background',
-			apply_filters(
-				'amb_site_custom_background_args',
-				array(
-					'default-color' => 'ffffff',
-					'default-image' => '',
-				)
-			)
-		);
-
-		// Custom logo support.
-		add_theme_support(
-			'custom-logo',
-			array(
+			'custom-logo', array(
 				'height'      => 250,
-				'width'       => 500,
-				'flex-height' => true,
+				'width'       => 250,
 				'flex-width'  => true,
-				'header-text' => array( 'site-title', 'site-description' ),
+				'flex-height' => true,
 			)
 		);
 
-		// Add theme support for selective refresh for widgets.
-		add_theme_support( 'customize-selective-refresh-widgets' );
-
-		// Gutenberg color palette support.
-		add_theme_support( 'editor-color-palette', amb_site_get_theme_colors_gutenberg() );
-
-		// Gutenberg support for full-width/wide alignment of supported blocks.
+		/**
+		 * Add support for wide and full width blocks.
+		 */
 		add_theme_support( 'align-wide' );
 
-		// Gutenberg defaults for font sizes.
-		add_theme_support(
-			'editor-font-sizes',
-			array(
-				array(
-					'name' => __( 'Small', 'advanced-maps-block' ),
-					'size' => 12,
-					'slug' => 'small',
-				),
-				array(
-					'name' => __( 'Normal', 'advanced-maps-block' ),
-					'size' => 16,
-					'slug' => 'normal',
-				),
-				array(
-					'name' => __( 'Large', 'advanced-maps-block' ),
-					'size' => 36,
-					'slug' => 'large',
-				),
-				array(
-					'name' => __( 'Huge', 'advanced-maps-block' ),
-					'size' => 50,
-					'slug' => 'huge',
-				),
-			)
-		);
-
-		// Gutenberg editor styles support.
-		add_theme_support( 'editor-styles' );
-		add_editor_style( 'style-editor.css' );
-
-		// Gutenberg responsive embed support.
-		add_theme_support( 'responsive-embeds' );
+		/**
+		 * Add various image sizes.
+		 */
+		add_image_size( 'share-facebook', 1200, 630, true );
+		add_image_size( 'share-twitter', 1024, 512, true );
 	}
-endif; // amb_site_setup
-add_action( 'after_setup_theme', 'amb_site_setup' );
+endif;
+add_action( 'after_setup_theme', 'marzeotti_base_setup' );
 
 /**
- * Set the content width in pixels, based on the theme's design and stylesheet.
- *
- * Priority 0 to make it available to lower priority callbacks.
- *
- * @global int $content_width
- * @author WDS
+ * Remove emoji styles.
  */
-function amb_site_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'amb_site_content_width', 640 );
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );
+remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+remove_action( 'admin_print_styles', 'print_emoji_styles' );
+
+/**
+ * Disable comment feeds.
+ */
+function marzeotti_base_disable_comments_feed() {
+	/* translators: %s: homepage url */
+	wp_die( sprintf( __( 'No feed available, please visit the <a href="%s">homepage</a>!', 'marzeotti_base' ), esc_url( home_url( '/' ) ) ) ); // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
 }
-add_action( 'after_setup_theme', 'amb_site_content_width', 0 );
+add_action( 'do_feed_rss2_comments', 'marzeotti_base_disable_comments_feed', 1 );
+add_action( 'do_feed_atom_comments', 'marzeotti_base_disable_comments_feed', 1 );
+add_filter( 'feed_links_show_comments_feed', '__return_false' );
 
 /**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- * @author WDS
+ * Enqueue scripts and styles.
  */
-function amb_site_widgets_init() {
+function marzeotti_base_scripts() {
+	wp_enqueue_style( 'marzeotti-base-style', get_stylesheet_directory_uri() . '/dist/css/style.css' );
+	wp_enqueue_script( 'marzeotti-base-script', get_stylesheet_directory_uri() . '/dist/js/app.js', array( 'jquery' ), '20151215', true );
+	wp_localize_script(
+		'marzeotti-base-script',
+		'marzeottiBaseGlobal',
+		array(
+			'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+			'nonce'   => wp_create_nonce( 'marzeotti_base_more_post_ajax_nonce' ),
+		)
+	);
+}
+add_action( 'wp_enqueue_scripts', 'marzeotti_base_scripts' );
 
-	// Define sidebars.
-	$sidebars = array(
-		'sidebar-1' => esc_html__( 'Sidebar 1', 'advanced-maps-block' ),
+/**
+ * Enqueue admin scripts and styles.
+ */
+function marzeotti_base_admin_scripts() {
+	wp_enqueue_style( 'admin-styles', get_stylesheet_directory_uri() . '/dist/css/admin.css' );
+	wp_enqueue_script( 'admin-script', get_stylesheet_directory_uri() . '/dist/js/admin.js' );
+}
+add_action( 'admin_enqueue_scripts', 'marzeotti_base_admin_scripts' );
+
+/**
+ * Dequeue block editor base styles.
+ */
+function marzeotti_base_dequeue_styles() {
+	wp_dequeue_style( 'wp-block-library' );
+}
+add_action( 'wp_print_styles', 'marzeotti_base_dequeue_styles', 100 );
+
+/**
+ * Add additional file extensions.
+ *
+ * @param array $mime_types An array of file types allowed.
+ */
+function marzeotti_base_add_mime_types( $mime_types ) {
+	$mime_types['svg'] = 'image/svg+xml';
+	return $mime_types;
+}
+add_filter( 'upload_mimes', 'marzeotti_base_add_mime_types', 1, 1 );
+
+/**
+ * Remove WordPress base menu classes.
+ *
+ * @param array  $classes An array of classes for this menu item.
+ * @param object $item    The post object for the menu item.
+ */
+function marzeotti_base_discard_menu_classes( $classes, $item ) {
+	return (array) get_post_meta( $item->ID, '_menu_item_classes', true );
+}
+add_filter( 'marzeotti_base_nav_menu_css_class', 'marzeotti_base_discard_menu_classes', 10, 2 );
+
+/**
+ * Set number of words to show in the excerpt.
+ *
+ * @param int $length Allowed length of the excerpt.
+ */
+function marzeotti_base_excerpt_length( $length ) {
+	return 30;
+}
+add_filter( 'excerpt_length', 'marzeotti_base_excerpt_length', 999 );
+
+/**
+ * Set characters to show after excerpt.
+ *
+ * @param string $more The text to display at the end of a generated excerpt.
+ */
+function marzeotti_base_excerpt_more( $more ) {
+	return '...';
+}
+add_filter( 'excerpt_more', 'marzeotti_base_excerpt_more' );
+
+/**
+ * Call more posts on posts page.
+ */
+function marzeotti_base_more_post_ajax() {
+	check_ajax_referer( 'marzeotti_base_more_post_ajax_nonce' );
+	$return = wp_unslash( $_POST ); // phpcs:ignore WordPress.VIP.SuperGlobalInputUsage.AccessDetected
+	$offset = sanitize_key( $return['offset'] );
+	$ppp    = sanitize_key( $return['ppp'] );
+
+	$args = array(
+		'post_type'      => 'post',
+		'posts_per_page' => $ppp,
+		'offset'         => $offset,
 	);
 
-	// Loop through each sidebar and register.
-	foreach ( $sidebars as $sidebar_id => $sidebar_name ) {
-		register_sidebar(
-			array(
-				'name'          => $sidebar_name,
-				'id'            => $sidebar_id,
-				'description'   => /* translators: the sidebar name */ sprintf( esc_html__( 'Widget area for %s', 'advanced-maps-block' ), $sidebar_name ),
-				'before_widget' => '<aside class="widget %2$s">',
-				'after_widget'  => '</aside>',
-				'before_title'  => '<h2 class="widget-title">',
-				'after_title'   => '</h2>',
-			)
-		);
-	}
-
+	$query = new WP_Query( $args );
+	while ( $query->have_posts() ) :
+		$query->the_post();
+		get_template_part( 'template-parts/content' );
+	endwhile;
+	exit;
 }
-add_action( 'widgets_init', 'amb_site_widgets_init' );
+add_action( 'wp_ajax_marzeotti_base_more_post_ajax', 'marzeotti_base_more_post_ajax' );
+add_action( 'wp_ajax_nopriv_marzeotti_base_more_post_ajax', 'marzeotti_base_more_post_ajax' );
 
 /**
  * Custom template tags for this theme.
@@ -190,51 +203,16 @@ add_action( 'widgets_init', 'amb_site_widgets_init' );
 require get_template_directory() . '/inc/template-tags.php';
 
 /**
- * Custom functions that act independently of the theme templates.
+ * Functions which enhance the theme by hooking into WordPress.
  */
-require get_template_directory() . '/inc/extras.php';
+require get_template_directory() . '/inc/template-functions.php';
 
 /**
- * Load Jetpack compatibility file.
+ * Additional custom post types and custom taxonomies.
  */
-require get_template_directory() . '/inc/jetpack.php';
+require get_template_directory() . '/inc/post-types-taxonomies.php';
 
 /**
- * Load styles and scripts.
+ * A custom walker class to modify the navigation markup.
  */
-require get_template_directory() . '/inc/scripts.php';
-
-/**
- * Load custom ACF features.
- */
-require get_template_directory() . '/inc/acf.php';
-
-/**
- * Load ACF Gutenberg block registration.
- */
-require get_template_directory() . '/inc/acf-gutenberg.php';
-
-/**
- * Load custom ACF search functionality.
- */
-require get_template_directory() . '/inc/acf-search.php';
-
-/**
- * Load custom filters and hooks.
- */
-require get_template_directory() . '/inc/hooks.php';
-
-/**
- * Load custom queries.
- */
-require get_template_directory() . '/inc/queries.php';
-
-/**
- * Customizer additions.
- */
-require get_template_directory() . '/inc/customizer/customizer.php';
-
-/**
- * Scaffolding Library.
- */
-require get_template_directory() . '/inc/scaffolding.php';
+require get_template_directory() . '/inc/class-marzeotti-base-walker-nav-menu.php';

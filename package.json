@@ -1,54 +1,37 @@
 {
-  "name": "wd_s",
+  "name": "marzeotti-base",
   "version": "1.0.0",
-  "description": "A theme boilerplate for WebDevStudios.",
-  "main": "Gulpfile.js",
-  "dependencies": {
-    "babel-core": "^6.26.3",
-    "babel-preset-env": "^1.7.0",
-    "browser-sync": "^2.26.3",
-    "css-mqpacker": "^6.0.2",
-    "del": "^3.0.0",
-    "eslint": "^4.19.1",
-    "eslint-config-wordpress": "^2.0.0",
-    "glob": "^7.1.2",
-    "gulp": "^3.9.1",
-    "gulp-babel": "^7.0.1",
-    "gulp-cheerio": "^0.6.3",
-    "gulp-concat": "^2.6.1",
-    "gulp-cssnano": "^2.1.3",
-    "gulp-eslint": "^4.0.2",
-    "gulp-imagemin": "^3.4.0",
-    "gulp-notify": "^3.2.0",
-    "gulp-plumber": "^1.2.0",
-    "gulp-postcss": "^7.0.1",
-    "gulp-rename": "^1.2.3",
-    "gulp-replace": "^1.0.0",
-    "gulp-sass": "^3.2.1",
-    "gulp-sass-lint": "^1.4.0",
-    "gulp-sort": "^2.0.0",
-    "gulp-sourcemaps": "^2.6.4",
-    "gulp-svgmin": "^1.2.4",
-    "gulp-svgstore": "^6.1.1",
-    "gulp-uglify": "^3.0.0",
-    "gulp-util": "^3.0.8",
-    "gulp-wp-pot": "^2.3.1",
-    "gulp.spritesmith": "^6.9.0",
-    "natives": "^1.1.6",
-    "sassdoc": "^2.5.1"
-  },
-  "devDependencies": {},
+  "description": "",
+  "main": "",
   "scripts": {
-    "test": "echo \"No test specified\""
+    "start": "webpack --watch",
+    "build": "webpack",
+    "watch": "webpack --watch"
   },
-  "repository": "git+https://github.com/WebDevStudios/wd_s.git",
-  "keywords": [
-    "theme"
-  ],
-  "author": "WebDevStudios",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/WebDevStudios/wd_s/issues"
+  "bin": {
+    "webpack": "./node_modules/.bin/webpack"
   },
-  "homepage": "https://github.com/WebDevStudios/wd_s#readme"
+  "author": "Mark Marzeotti",
+  "license": "",
+  "devDependencies": {
+    "autoprefixer": "^9.6.1",
+    "babel-cli": "6.18.0",
+    "babel-loader": "6.2.5",
+    "babel-preset-env": "^1.6.1",
+    "browser-sync": "^2.26.7",
+    "browser-sync-webpack-plugin": "^1.2.0",
+    "css-loader": "^3.2.0",
+    "cssnano": "^4.1.10",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^4.1.0",
+    "json-loader": "0.5.4",
+    "node-sass": "^4.12.0",
+    "postcss-import": "^11.0.0",
+    "postcss-loader": "^2.0.9",
+    "sass-loader": "4.0.2",
+    "style-loader": "0.13.1",
+    "url-loader": "^2.1.0",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.5"
+  }
 }

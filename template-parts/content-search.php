@@ -1,30 +1,29 @@
 <?php
 /**
- * Template part for displaying results in search pages.
+ * Template part for displaying results in search pages
  *
- * @link https://codex.wordpress.org/Template_Hierarchy
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package Advanced Maps Block
+ * @package Marzeotti_Base
  */
 
 ?>
 
-	<article <?php post_class(); ?>>
-		<header class="entry-header">
-			<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+<article id="post-<?php the_ID(); ?>">
+	<header>
+		<?php the_title( sprintf( '<h2><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
 
-			<?php if ( 'post' === get_post_type() ) : ?>
-			<div class="entry-meta">
-				<?php amb_site_posted_on(); ?>
-			</div><!-- .entry-meta -->
-			<?php endif; ?>
-		</header><!-- .entry-header -->
+		<?php if ( 'post' === get_post_type() ) : ?>
+		<div>
+			<?php
+			marzeotti_base_posted_on();
+			marzeotti_base_posted_by();
+			?>
+		</div>
+		<?php endif; ?>
+	</header>
 
-		<div class="entry-summary">
-			<?php the_excerpt(); ?>
-		</div><!-- .entry-summary -->
-
-		<footer class="entry-footer">
-			<?php amb_site_entry_footer(); ?>
-		</footer><!-- .entry-footer -->
-	</article><!-- #post-## -->
+	<div>
+		<?php the_excerpt(); ?>
+	</div>
+</article>

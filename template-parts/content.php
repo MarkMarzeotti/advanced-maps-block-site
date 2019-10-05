@@ -1,57 +1,57 @@
 <?php
 /**
- * Template part for displaying posts.
+ * Template part for displaying posts
  *
- * @link https://codex.wordpress.org/Template_Hierarchy
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package Advanced Maps Block
+ * @package Marzeotti_Base
  */
 
 ?>
 
-	<article <?php post_class( 'container' ); ?>>
-		<header class="entry-header">
-			<?php
-			if ( is_single() ) :
-				the_title( '<h1 class="entry-title">', '</h1>' );
-			else :
-				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-			endif;
-			if ( 'post' === get_post_type() ) :
+<article id="post-<?php the_ID(); ?>">
+	<header>
+		<?php
+		if ( is_singular() ) :
+			the_title( '<h1>', '</h1>' );
+		else :
+			the_title( '<h2><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+		endif;
+
+		if ( 'post' === get_post_type() ) :
 			?>
-			<div class="entry-meta">
-				<?php amb_site_posted_on(); ?>
-			</div><!-- .entry-meta -->
-			<?php endif; ?>
-		</header><!-- .entry-header -->
+			<div>
+				<?php
+				marzeotti_base_posted_on();
+				marzeotti_base_posted_by();
+				?>
+			</div>
+		<?php endif; ?>
+	</header>
 
-		<div class="entry-content">
-			<?php
-				the_content(
-					sprintf(
-						wp_kses(
-							/* translators: %s: Name of current post. */
-							__( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'advanced-maps-block' ),
-							array(
-								'span' => array(
-									'class' => array(),
-								),
-							)
-						),
-						the_title( '<span class="screen-reader-text">"', '"</span>', false )
-					)
-				);
-
-				wp_link_pages(
+	<div>
+		<?php
+		the_content(
+			sprintf(
+				wp_kses(
+					/* translators: %s: Name of current post. Only visible to screen readers */
+					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'marzeotti_base' ),
 					array(
-						'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'advanced-maps-block' ),
-						'after'  => '</div>',
+						'span' => array(
+							'class' => array(),
+						),
 					)
-				);
-			?>
-		</div><!-- .entry-content -->
+				),
+				get_the_title()
+			)
+		);
 
-		<footer class="entry-footer">
-			<?php amb_site_entry_footer(); ?>
-		</footer><!-- .entry-footer -->
-	</article><!-- #post-## -->
+		wp_link_pages(
+			array(
+				'before' => '<div>' . esc_html__( 'Pages:', 'marzeotti_base' ),
+				'after'  => '</div>',
+			)
+		);
+		?>
+	</div>
+</article>

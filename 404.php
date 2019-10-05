@@ -1,30 +1,31 @@
 <?php
 /**
- * The template for displaying 404 pages (not found).
+ * The template for displaying 404 pages (not found)
  *
  * @link https://codex.wordpress.org/Creating_an_Error_404_Page
  *
- * @package Advanced Maps Block
+ * @package Marzeotti_Base
  */
 
-get_header(); ?>
+get_header();
+?>
 
-	<main id="main" class="site-main">
+	<div class="container">
+		<main id="main" class="content__full-width">
 
-		<section class="error-404 not-found container">
-			<header class="page-header">
-				<h1 class="page-title"><?php esc_html_e( 'Sorry, this page doesn\'t exist.', 'advanced-maps-block' ); ?></h1>
-			</header><!-- .page-header -->
+			<section>
+				<header>
+					<h1><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'marzeotti_base' ); ?></h1>
+				</header>
 
-			<div class="page-content">
+				<div>
+					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try a search?', 'marzeotti_base' ); ?></p>
+					<?php get_search_form(); ?>
+				</div>
+			</section>
 
-				<p><?php esc_html_e( 'It seems we can\'t find what you’re looking for. Perhaps searching can help.', 'advanced-maps-block' ); ?></p>
+		</main>
+	</div>
 
-				<?php get_search_form(); ?>
-
-			</div><!-- .page-content -->
-		</section><!-- .error-404 -->
-
-	</main><!-- #main -->
-
-<?php get_footer(); ?>
+<?php
+get_footer();

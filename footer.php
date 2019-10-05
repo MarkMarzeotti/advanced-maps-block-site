@@ -1,27 +1,47 @@
 <?php
 /**
- * The template for displaying the footer.
+ * The template for displaying the footer
  *
  * Contains the closing of the #content div and all content after.
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package Advanced Maps Block
+ * @package Marzeotti_Base
  */
 
 ?>
 
-	<footer class="site-footer background-gallery">
+	</div>
 
-		<div class="site-info">
-			<?php amb_site_display_copyright_text(); ?>
-			<?php amb_site_display_social_network_links(); ?>
-		</div><!-- .site-info -->
-	</footer><!-- .site-footer container-->
+	<div class="modals">
+		<div id="modal-1">
+			<button class="modal-close" aria-controls="modal-1" aria-expanded="false"><?php esc_html_e( 'Close', 'marzeotti_base' ); ?></button>
+		</div>
+	</div>
 
-	<?php wp_footer(); ?>
+	<footer id="footer" class="footer">
+		<div class="container">
+			<div class="footer__copyright">
+				<?php $marzeotti_base_date = date( 'Y' ); ?>
+				<p>&copy; <?php echo esc_html( $marzeotti_base_date ); ?> <?php bloginfo( 'name' ); ?>. All Rights Reserved.</p>
+			</div>
 
-	<?php amb_site_display_mobile_menu(); ?>
+			<nav class="footer__nav">
+				<?php
+				wp_nav_menu(
+					array(
+						'container'      => false,
+						'menu_class'     => false,
+						'theme_location' => 'footer-menu',
+					)
+				);
+				?>
+			</nav>
+		</div>
+	</footer>
+</div>
+
+<?php wp_footer(); ?>
 
 </body>
 </html>
