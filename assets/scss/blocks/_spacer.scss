@@ -3,5 +3,6 @@
 
 	@include grid-media($medium-screen-grid) {
 		@include grid-column(12);
+		padding: 20px 0;
 	}
 }

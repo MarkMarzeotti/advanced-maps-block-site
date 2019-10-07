@@ -103,4 +103,17 @@ li {
 	strong {
 		font-weight: 600;
 	}
+
+	a {
+		color: $color__froly;
+		transition: color 300ms ease;
+
+		&:visited {
+			color: darken($color__froly, 10%);
+		}
+
+		&:hover {
+			color: lighten($color__froly, 10%);
+		}
+	}
 }

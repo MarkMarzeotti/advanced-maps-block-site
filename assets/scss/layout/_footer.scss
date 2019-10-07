@@ -4,17 +4,42 @@
 
 	&__copyright {
 		@include grid-column(4);
+		margin-bottom: 20px;
 
 		@include grid-media( $medium-screen-grid ) {
 			@include grid-column(6);
+			margin-bottom: 0;
 		}
 	}
 
 	&__nav {
 		@include grid-column(4);
+		display: flex;
 
 		@include grid-media( $medium-screen-grid ) {
 			@include grid-column(6);
+			justify-content: flex-end;
+		}
+
+		ul {
+			display: flex;
+
+			li {
+				display: flex;
+
+				a {
+					color: $color__athens-gray;
+					text-decoration: none;
+					transition: color 300ms ease;
+				}
+
+				&:hover {
+
+					a {
+						color: $color__froly;
+					}
+				}
+			}
 		}
 	}
 }

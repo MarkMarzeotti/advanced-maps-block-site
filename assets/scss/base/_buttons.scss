@@ -1,9 +1,6 @@
 .btn,
-a.btn,
-.btn:visited,
-a.btn:visited,
 input[type=button],
-.wp-block-button .wp-block-button__link {
+.wp-block-button__link {
 	appearance: none;
 	background-color: $color__cornflower-blue;
 	border: 0;
@@ -44,20 +41,14 @@ input[type=button],
 	a {
 		font-weight: 500 !important;
 	}
-
-	&.btn--pink {
-		background-color: $color__froly;
-
-		&:hover {
-			background-color: darken($color__froly, 10%);
-		}
-	}
 }
 
-.btn a,
-.btn a:visited {
-	color: $color__white;
-	margin: -15px -30px -13px;
-	padding: 15px 30px 13px;
-	text-decoration: none;
+.btn--pink {
+	@extend .btn;
+	background-color: $color__froly;
+
+	&:hover {
+		background-color: darken($color__froly, 5%);
+		color: $color__white;
+	}
 }

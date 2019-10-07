@@ -39,7 +39,14 @@
 
 			<?php if ( has_nav_menu( 'primary-menu' ) || has_nav_menu( 'button-menu' ) ) : ?>
 				<nav id="site-navigation" class="header__nav nav">
-					<button class="nav__button" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'marzeotti-base' ); ?></button>
+					<button class="nav__button" aria-controls="primary-menu" aria-expanded="false">
+						<span class="screen-reader-text"><?php esc_html_e( 'Primary Menu', 'marzeotti_portfolio' ); ?></span>
+						<span class="hamburger">
+							<span class="hamburger__top"></span>
+							<span class="hamburger__middle"></span>
+							<span class="hamburger__bottom"></span>
+						</span>
+					</button>
 					<?php
 					if ( has_nav_menu( 'primary-menu' ) ) :
 						wp_nav_menu(

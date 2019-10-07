@@ -32,7 +32,8 @@
 							'walker'         => new Marzeotti_Base_Walker_Nav_Menu(),
 							'depth'          => 1,
 						)
-					); ?>
+					);
+					?>
 				</nav>
 			<?php endif; ?>
 		</div>

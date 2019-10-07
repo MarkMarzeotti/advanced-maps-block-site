@@ -21,10 +21,10 @@ get_header();
 				</div>
 				<svg width="200" height="300" viewBox="0 0 200 300">
 					<?php
-					for ( $i = 1; $i < 7; $i++ ) {
-						for ( $ii = 1; $ii < 13; $ii++ ) {
+					for ( $i = 1; $i < 7; $i++ ) { // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
+						for ( $ii = 1; $ii < 13; $ii++ ) { // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 							?>
-							<circle cx="<?php echo $i * 28; ?>" cy="<?php echo $ii * 28; ?>" r="4" fill="#ffffff" opacity="0.2" />
+							<circle cx="<?php echo esc_attr( $i * 28 ); ?>" cy="<?php echo esc_attr( $ii * 28 ); ?>" r="4" fill="#ffffff" opacity="0.2" />
 							<?php
 						}
 					}

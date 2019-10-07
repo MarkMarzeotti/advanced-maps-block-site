@@ -6,27 +6,34 @@
 	z-index: 0;
 
 	&::before {
-		@include position(absolute, null -100px 0 null);
+		@include position(absolute, null -400px 0 null);
 		background-color: $color__mirage;
 		border-bottom-right-radius: 100vh;
 		content: '';
 		height: 200vh;
 		width: 200vw;
 		z-index: 0;
+
+		@include grid-media($medium-screen-grid) {
+			right: -100px;
+		}
 	}
 
 	.container {
+		align-items: center;
 		display: flex;
 		flex-flow: row wrap;
 	}
 
 	&__content {
 		@include grid-column(4);
+		margin-bottom: 40px;
 		position: relative;
 		z-index: 100;
 
 		@include grid-media($medium-screen-grid) {
 			@include grid-column(6);
+			margin-bottom: 0;
 			padding: 60px 0;
 		}
 
@@ -42,6 +49,7 @@
 
 		@include grid-media($medium-screen-grid) {
 			@include grid-column(6);
+			padding-bottom: 0;
 		}
 
 		svg {
@@ -51,11 +59,17 @@
 	}
 
 	&__video-container {
-		@include position(absolute, 0 null 0 0);
 		background-color: $color__comet;
 		border-radius: 20px;
-		width: 140%;
+		padding-bottom: calc(62% / 100 * 120);
+		position: relative;
+		width: 120%;
 		z-index: 100;
+
+		@include grid-media($medium-screen-grid) {
+			width: 140%;
+			padding-bottom: calc(62% / 100 * 140);
+		}
 
 		&::before {
 			@include position(absolute, 20px 20px 20px 20px);
