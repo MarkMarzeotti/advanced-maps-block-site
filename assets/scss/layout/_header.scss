@@ -1,10 +1,39 @@
 .header {
+	background-color: $color__mirage;
+	padding: 20px 0;
+	position: relative;
+	z-index: 100;
 
 	&__logo {
 		@include grid-column(2);
 
 		@include grid-media($medium-screen-grid) {
 			@include grid-column(6);
+		}
+
+		h1,
+		p {
+			color: $color__athens-gray;
+			font-size: 40px;
+			font-weight: 700;
+			line-height: 1.2;
+
+			@include grid-media($medium-screen-grid) {
+				max-width: 300px;
+			}
+
+			a {
+				color: $color__athens-gray;
+				text-decoration: none;
+				transition: color 300ms ease;
+			}
+
+			&:hover {
+
+				a {
+					color: $color__froly;
+				}
+			}
 		}
 	}
 
@@ -13,6 +42,53 @@
 
 		@include grid-media($medium-screen-grid) {
 			@include grid-column(6);
+			display: flex;
+			justify-content: flex-end;
+			padding: 20px 0;
+
+			ul {
+				display: inline;
+
+				li {
+					display: inline;
+					float: left;
+
+					a {
+						color: $color__athens-gray;
+						float: left;
+						font-size: 16px;
+						padding: 20px;
+						text-decoration: none;
+						transition: color 300ms ease;
+					}
+
+					&:hover {
+
+						a {
+							color: $color__froly;
+						}
+					}
+				}
+			}
+
+			button {
+				display: none;
+			}
+		}
+
+		ul {
+
+			&.button-menu {
+
+				li {
+
+					a {
+						@extend .btn;
+						box-shadow: none;
+						margin: 12px 0 10px 30px;
+					}
+				}
+			}
 		}
 	}
 }

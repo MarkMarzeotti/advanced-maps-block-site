@@ -1,0 +1,106 @@
+.wp-block-media-text {
+	align-items: center;
+	display: flex;
+	flex-flow: row wrap;
+	width: 100%;
+
+	@include grid-media($medium-screen-grid) {
+		flex-flow: row nowrap;
+		padding-bottom: 80px;
+	}
+
+	&__media {
+		@include grid-column(4);
+		margin-bottom: 40px;
+		position: relative;
+
+		@include grid-media($medium-screen-grid) {
+			@include grid-column(4);
+			margin-bottom: 0;
+		}
+
+		img {
+			border-radius: 20px;
+			position: relative;
+			width: 100%;
+			z-index: 100;
+
+			@include grid-media($medium-screen-grid) {
+				margin-left: -100%;
+				width: 200%;
+			}
+		}
+
+		&::before {
+			@include position(absolute, 40px 80px -40px null);
+			background-color: $color__froly;
+			border-radius: 40px 10px;
+			content: '';
+			opacity: .8;
+			width: 140%;
+			z-index: 0;
+
+			@include grid-media($medium-screen-grid) {
+				border-radius: 100px 10px;
+				bottom: -80px;
+				width: 200%;
+			}
+		}
+	}
+
+	&__content {
+		@include grid-column(4);
+		padding-bottom: 80px;
+		padding-top: 40px;
+
+		@include grid-media($medium-screen-grid) {
+			@include grid-column(7);
+			@include grid-shift(1);
+		}
+
+		> * {
+			margin-left: 0;
+		}
+	}
+
+	&.has-media-on-the-right {
+
+		.wp-block-media-text {
+
+			&__media {
+
+				@include grid-media($medium-screen-grid) {
+					@include grid-column(4);
+					@include grid-shift(8);
+				}
+
+				img {
+					margin-left: 0;
+					margin-right: -40%;
+
+					@include grid-media($medium-screen-grid) {
+						margin-right: -100%;
+					}
+				}
+
+				&::before {
+					@include position(absolute, 40px null -40px 80px);
+					border-radius: 10px 50px;
+
+					@include grid-media($medium-screen-grid) {
+						border-radius: 10px 100px;
+						bottom: -80px;
+					}
+				}
+			}
+
+			&__content {
+
+				@include grid-media($medium-screen-grid) {
+					@include grid-column(7);
+					@include grid-shift(-4);
+				}
+			}
+		}
+	}
+}

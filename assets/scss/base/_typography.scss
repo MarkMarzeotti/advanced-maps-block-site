@@ -1,3 +1,10 @@
+$font__poppins: 'Poppins', sans-serif;
+$font__rubik: 'Rubik', sans-serif;
+
+body {
+	font-family: $font__poppins;
+}
+
 h1,
 .h1,
 h2,
@@ -10,6 +17,8 @@ h5,
 .h5,
 h6,
 .h6 {
+	color: $color__ebony;
+	font-family: $font__rubik;
 	margin-bottom: 18px;
 	margin-top: 0;
 
@@ -20,76 +29,78 @@ h6,
 
 h1,
 .h1 {
-	font-size: 48px;
-	line-height: 57px;
+	font-size: 40px;
+	line-height: 1.2;
 
 	@include grid-media($medium-screen-grid) {
-		font-size: 90px;
-		line-height: 105px;
+		font-size: 60px;
 	}
 }
 
 h2,
 .h2 {
 	font-size: 30px;
-	line-height: 35px;
+	line-height: 1.2;
 
 	@include grid-media($medium-screen-grid) {
 		font-size: 36px;
-		line-height: 42px;
 	}
 }
 
 h3,
 .h3 {
 	font-size: 24px;
-	line-height: 36px;
+	line-height: 1.2;
+	margin-bottom: 18px;
+	margin-top: 0;
 
 	@include grid-media($medium-screen-grid) {
 		font-size: 30px;
-		line-height: 48px;
+		margin-bottom: 20px;
 	}
 }
 
 h4,
 .h4 {
 	font-size: 21px;
-	line-height: 33px;
+	line-height: 1.2;
 
 	@include grid-media($medium-screen-grid) {
 		font-size: 24px;
-		line-height: 36px;
 	}
 }
 
 h5,
 .h5 {
 	font-size: 18px;
-	line-height: 30px;
+	line-height: 1.2;
 
 	@include grid-media($medium-screen-grid) {
 		font-size: 21px;
-		line-height: 33px;
 	}
 }
 
 h6,
 .h6 {
 	font-size: 16px;
-	line-height: 27px;
+	line-height: 1.2;
 
 	@include grid-media($medium-screen-grid) {
 		font-size: 18px;
-		line-height: 30px;
 	}
 }
 
-p {
+p,
+li {
+	color: $color__comet;
 	font-size: 16px;
-	line-height: 27px;
+	line-height: 1.6;
 
 	@include grid-media($medium-screen-grid) {
 		font-size: 18px;
-		line-height: 30px;
+	}
+
+	strong {
+		font-weight: 600;
 	}
 }

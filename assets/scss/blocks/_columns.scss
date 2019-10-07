@@ -1,0 +1,26 @@
+.wp-block-columns {
+	@include grid-column(4);
+	display: flex;
+	flex-flow: row wrap;
+
+	@include grid-media($medium-screen-grid) {
+		@include grid-column(12);
+		flex-flow: row nowrap;
+	}
+
+	.wp-block-column {
+		flex-basis: 100%;
+		flex-grow: 1;
+		margin-bottom: 20px;
+
+		@include grid-media($medium-screen-grid) {
+			flex-basis: 80px;
+			margin-bottom: 40px;
+			margin-right: 40px;
+
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+}

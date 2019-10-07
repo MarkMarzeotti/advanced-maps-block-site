@@ -1,0 +1,7 @@
+.wp-block-spacer {
+	@include grid-column(4);
+
+	@include grid-media($medium-screen-grid) {
+		@include grid-column(12);
+	}
+}

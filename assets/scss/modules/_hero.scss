@@ -1,0 +1,99 @@
+.hero {
+	float: left;
+	padding: 60px 0;
+	position: relative;
+	width: 100%;
+	z-index: 0;
+
+	&::before {
+		@include position(absolute, null -100px 0 null);
+		background-color: $color__mirage;
+		border-bottom-right-radius: 100vh;
+		content: '';
+		height: 200vh;
+		width: 200vw;
+		z-index: 0;
+	}
+
+	.container {
+		display: flex;
+		flex-flow: row wrap;
+	}
+
+	&__content {
+		@include grid-column(4);
+		position: relative;
+		z-index: 100;
+
+		@include grid-media($medium-screen-grid) {
+			@include grid-column(6);
+			padding: 60px 0;
+		}
+
+		* {
+			color: $color__athens-gray;
+		}
+	}
+
+	&__video {
+		@include grid-column(4);
+		position: relative;
+		z-index: 100;
+
+		@include grid-media($medium-screen-grid) {
+			@include grid-column(6);
+		}
+
+		svg {
+			@include position(absolute, null null -40px -100px);
+			z-index: 0;
+		}
+	}
+
+	&__video-container {
+		@include position(absolute, 0 null 0 0);
+		background-color: $color__comet;
+		border-radius: 20px;
+		width: 140%;
+		z-index: 100;
+
+		&::before {
+			@include position(absolute, 20px 20px 20px 20px);
+			background-color: $color__gallery;
+			border-radius: 8px;
+			content: '';
+			z-index: 0;
+		}
+	}
+
+	&__play-button {
+		@include position(absolute, 0 0 0 0);
+		background-clip: padding-box;
+		background-color: $color__cornflower-blue;
+		border: 20px solid rgba($color__cornflower-blue, .4);
+		border-radius: 100px;
+		content: '';
+		height: 140px;
+		margin: auto;
+		text-indent: -9999px;
+		transition: all 300ms ease;
+		width: 140px;
+		z-index: 100;
+
+		&::after {
+			@include position(absolute, 0 0 0 10px);
+			border-bottom: 20px solid transparent;
+			border-left: 30px solid $color__white;
+			border-right: 0;
+			border-top: 20px solid transparent;
+			content: '';
+			height: 0;
+			margin: auto;
+			width: 0;
+		}
+
+		&:hover {
+			border: 0 solid rgba($color__cornflower-blue, .4);
+		}
+	}
+}

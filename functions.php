@@ -45,6 +45,7 @@ if ( ! function_exists( 'marzeotti_base_setup' ) ) :
 		register_nav_menus(
 			array(
 				'primary-menu' => esc_html__( 'Primary Menu', 'marzeotti-base' ),
+				'button-menu'  => esc_html__( 'Button Menu', 'marzeotti-base' ),
 				'footer-menu'  => esc_html__( 'Footer Menu', 'marzeotti-base' ),
 			)
 		);
@@ -101,6 +102,7 @@ add_filter( 'feed_links_show_comments_feed', '__return_false' );
  * Enqueue scripts and styles.
  */
 function marzeotti_base_scripts() {
+	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Poppins:400,500,600,700|Rubik:500,700', array(), '20191005' );
 	wp_enqueue_style( 'marzeotti-base-style', get_stylesheet_directory_uri() . '/dist/css/style.css', array(), wp_get_theme()->get( 'Version' ) );
 	wp_enqueue_script( 'marzeotti-base-script', get_stylesheet_directory_uri() . '/dist/js/app.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true );
 	wp_localize_script(

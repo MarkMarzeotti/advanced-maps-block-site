@@ -1,4 +1,6 @@
 .footer {
+	background-color: $color__mirage;
+	padding: 46px 0 40px;
 
 	&__copyright {
 		@include grid-column(4);

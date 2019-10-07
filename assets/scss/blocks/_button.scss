@@ -1,0 +1,16 @@
+.wp-block-button {
+	@include grid-column(4);
+
+	@include grid-media($medium-screen-grid) {
+		@include grid-column(12);
+	}
+
+	&.aligncenter {
+		text-align: center;
+
+		a {
+			margin-left: 20px;
+			margin-right: 20px;
+		}
+	}
+}

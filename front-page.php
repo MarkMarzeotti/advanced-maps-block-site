@@ -10,6 +10,30 @@
 get_header();
 ?>
 
+	<div class="hero">
+		<div class="container">
+			<div class="hero__content">
+				<h1>The easy to use Google Maps block for Gutenberg</h1>
+			</div>
+			<div class="hero__video">
+				<div class="hero__video-container">
+					<button class="hero__play-button">Play Video</button>
+				</div>
+				<svg width="200" height="300" viewBox="0 0 200 300">
+					<?php
+					for ( $i = 1; $i < 7; $i++ ) {
+						for ( $ii = 1; $ii < 13; $ii++ ) {
+							?>
+							<circle cx="<?php echo $i * 28; ?>" cy="<?php echo $ii * 28; ?>" r="4" fill="#ffffff" opacity="0.2" />
+							<?php
+						}
+					}
+					?>
+				</svg>
+			</div>
+		</div>
+	</div>
+
 	<div class="container">
 		<main id="main" class="content__blocks">
 
