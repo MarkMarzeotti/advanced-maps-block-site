@@ -7,76 +7,130 @@
  * @package Marzeotti_Base
  */
 
-if ( ! function_exists( 'marzeotti_base_setup' ) ) :
+/**
+ * Sets up theme defaults and registers support for various WordPress features.
+ */
+function marzeotti_base_setup() {
+	/*
+		* Make theme available for translation.
+		* Translations can be filed in the /languages/ directory.
+		* If you're building a theme based on Marzeotti Base, use a find and replace
+		* to change 'marzeotti-base' to the name of your theme in all the template files.
+		*/
+	load_theme_textdomain( 'marzeotti-base', get_template_directory() . '/languages' );
+
 	/**
-	 * Sets up theme defaults and registers support for various WordPress features.
+	 * Add default posts and comments RSS feed links to head.
 	 */
-	function marzeotti_base_setup() {
-		/*
-		 * Make theme available for translation.
-		 * Translations can be filed in the /languages/ directory.
-		 * If you're building a theme based on Marzeotti Base, use a find and replace
-		 * to change 'marzeotti-base' to the name of your theme in all the template files.
-		 */
-		load_theme_textdomain( 'marzeotti-base', get_template_directory() . '/languages' );
+	add_theme_support( 'automatic-feed-links' );
 
-		/**
-		 * Add default posts and comments RSS feed links to head.
-		 */
-		add_theme_support( 'automatic-feed-links' );
+	/*
+		* Enable the title tag controlled by WordPress.
+		*/
+	add_theme_support( 'title-tag' );
 
-		/*
-		 * Enable the title tag controlled by WordPress.
-		 */
-		add_theme_support( 'title-tag' );
+	/*
+		* Enable support for Post Thumbnails on posts and pages.
+		*
+		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+		*/
+	add_theme_support( 'post-thumbnails' );
 
-		/*
-		 * Enable support for Post Thumbnails on posts and pages.
-		 *
-		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-		 */
-		add_theme_support( 'post-thumbnails' );
+	/*
+		* Register menu locations.
+		*
+		* @link https://developer.wordpress.org/reference/functions/register_nav_menus/
+		*/
+	register_nav_menus(
+		array(
+			'primary-menu' => esc_html__( 'Primary Menu', 'marzeotti-base' ),
+			'button-menu'  => esc_html__( 'Button Menu', 'marzeotti-base' ),
+			'footer-menu'  => esc_html__( 'Footer Menu', 'marzeotti-base' ),
+		)
+	);
 
-		/*
-		 * Register menu locations.
-		 *
-		 * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
-		 */
-		register_nav_menus(
-			array(
-				'primary-menu' => esc_html__( 'Primary Menu', 'marzeotti-base' ),
-				'button-menu'  => esc_html__( 'Button Menu', 'marzeotti-base' ),
-				'footer-menu'  => esc_html__( 'Footer Menu', 'marzeotti-base' ),
-			)
-		);
+	/**
+	 * Add support for core custom logo.
+	 *
+	 * @link https://codex.wordpress.org/Theme_Logo
+	 */
+	add_theme_support(
+		'custom-logo',
+		array(
+			'height'      => 250,
+			'width'       => 250,
+			'flex-width'  => true,
+			'flex-height' => true,
+		)
+	);
 
-		/**
-		 * Add support for core custom logo.
-		 *
-		 * @link https://codex.wordpress.org/Theme_Logo
-		 */
-		add_theme_support(
-			'custom-logo',
-			array(
-				'height'      => 250,
-				'width'       => 250,
-				'flex-width'  => true,
-				'flex-height' => true,
-			)
-		);
+	/**
+	 * Add support for wide and full width blocks.
+	 */
+	add_theme_support( 'align-wide' );
 
-		/**
-		 * Add support for wide and full width blocks.
-		 */
-		add_theme_support( 'align-wide' );
+	/**
+	 * Add various image sizes.
+	 */
+	add_image_size( 'share-facebook', 1200, 630, true );
+	add_image_size( 'share-twitter', 1024, 512, true );
 
-		/**
-		 * Add various image sizes.
-		 */
-		add_image_size( 'share-facebook', 1200, 630, true );
-		add_image_size( 'share-twitter', 1024, 512, true );
-	}
-endif;
+	/**
+	 * Add a custom color pallete
+	 */
+	add_theme_support( 'editor-color-palette', array(
+		array(
+			'name'  => __( 'Black', 'marzeotti-base' ),
+			'slug'  => 'black',
+			'color'	=> '#000000',
+		),
+		array(
+			'name'  => __( 'Ebony', 'marzeotti-base' ),
+			'slug'  => 'ebony',
+			'color' => '#131333',
+		),
+		array(
+			'name'  => __( 'Mirage', 'marzeotti-base' ),
+			'slug'  => 'mirage',
+			'color' => '#1c233c',
+		),
+		array(
+			'name'  => __( 'White', 'marzeotti-base' ),
+			'slug'  => 'white',
+			'color' => '#ffffff',
+		),
+		array(
+			'name'  => __( 'Athens Gray', 'marzeotti-base' ),
+			'slug'  => 'athens-gray',
+			'color' => '#f9f9fa',
+		),
+		array(
+			'name'  => __( 'Gallery', 'marzeotti-base' ),
+			'slug'  => 'gallery',
+			'color' => '#eeeeee',
+		),
+		array(
+			'name'  => __( 'Cornflower Blue', 'marzeotti-base' ),
+			'slug'  => 'cornflower-blue',
+			'color' => '#7280ff',
+		),
+		array(
+			'name'  => __( 'Comet', 'marzeotti-base' ),
+			'slug'  => 'comet',
+			'color' => '#626981',
+		),
+		array(
+			'name'  => __( 'Froly', 'marzeotti-base' ),
+			'slug'  => 'froly',
+			'color' => '#f15f73',
+		),
+		array(
+			'name'  => __( 'Yellow Orange', 'marzeotti-base' ),
+			'slug'  => 'yellow-orange',
+			'color' => '#feb633',
+		),
+	) );
+}
 add_action( 'after_setup_theme', 'marzeotti_base_setup' );
 
 /**
@@ -99,10 +153,9 @@ add_action( 'do_feed_atom_comments', 'marzeotti_base_disable_comments_feed', 1 )
 add_filter( 'feed_links_show_comments_feed', '__return_false' );
 
 /**
- * Enqueue scripts and styles.
+ * Enqueue front end scripts and styles.
  */
-function marzeotti_base_scripts() {
-	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Poppins:400,500,600,700|Rubik:500,700', array(), '20191005' );
+function marzeotti_base_front_end_assets() {
 	wp_enqueue_style( 'marzeotti-base-style', get_stylesheet_directory_uri() . '/dist/css/style.css', array(), wp_get_theme()->get( 'Version' ) );
 	wp_enqueue_script( 'marzeotti-base-script', get_stylesheet_directory_uri() . '/dist/js/app.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true );
 	wp_localize_script(
@@ -114,16 +167,25 @@ function marzeotti_base_scripts() {
 		)
 	);
 }
-add_action( 'wp_enqueue_scripts', 'marzeotti_base_scripts' );
+add_action( 'wp_enqueue_scripts', 'marzeotti_base_front_end_assets' );
 
 /**
  * Enqueue admin scripts and styles.
  */
-function marzeotti_base_admin_scripts() {
+function marzeotti_base_admin_assets() {
 	wp_enqueue_style( 'admin-styles', get_stylesheet_directory_uri() . '/dist/css/admin.css', array(), wp_get_theme()->get( 'Version' ) );
 	wp_enqueue_script( 'admin-script', get_stylesheet_directory_uri() . '/dist/js/admin.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true );
 }
-add_action( 'admin_enqueue_scripts', 'marzeotti_base_admin_scripts' );
+add_action( 'admin_enqueue_scripts', 'marzeotti_base_admin_assets' );
+
+/**
+ * Enqueue scripts and styles used on both front end and admin.
+ */
+function marzeotti_base_assets() {
+	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Poppins:400,500,600,700|Rubik:500,700', array(), '20191005' );
+}
+add_action( 'wp_enqueue_scripts', 'marzeotti_base_assets' );
+add_action( 'admin_enqueue_scripts', 'marzeotti_base_assets' );
 
 /**
  * Dequeue block editor base styles.

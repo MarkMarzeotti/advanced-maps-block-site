@@ -1,2 +1,18 @@
 @import 'vendors/bourbon/bourbon';
 @import 'vendors/neat/neat';
+
+.block-editor-writing-flow {
+	@import 'helpers/grid';
+	@import 'base/colors';
+	@import 'base/typography';
+
+	.editor-post-title__block .editor-post-title__input {
+		color: $color__ebony;
+		font-family: $font__rubik;
+	}
+
+	.wp-block-button .wp-block-button__link {
+		background-color: $color__cornflower-blue;
+		font-family: $font__poppins;
+	}
+}
