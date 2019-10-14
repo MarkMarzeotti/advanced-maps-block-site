@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package Marzeotti_Base
+ * @package Advanced_Maps_Block
  */
 
 ?>
@@ -20,7 +20,7 @@
 
 <body <?php body_class(); ?>>
 <div id="page">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'marzeotti-base' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'advanced-maps-block' ); ?></a>
 
 	<header id="masthead" class="header">
 		<div class="container">
@@ -40,7 +40,7 @@
 			<?php if ( has_nav_menu( 'primary-menu' ) || has_nav_menu( 'button-menu' ) ) : ?>
 				<nav id="site-navigation" class="header__nav nav">
 					<button class="nav__button" aria-controls="primary-menu" aria-expanded="false">
-						<span class="screen-reader-text"><?php esc_html_e( 'Primary Menu', 'marzeotti_portfolio' ); ?></span>
+						<span class="screen-reader-text"><?php esc_html_e( 'Primary Menu', 'advanced-maps-block' ); ?></span>
 						<span class="hamburger">
 							<span class="hamburger__top"></span>
 							<span class="hamburger__middle"></span>
@@ -55,7 +55,7 @@
 								'menu_id'        => 'primary-menu',
 								'menu_class'     => 'nav__level',
 								'theme_location' => 'primary-menu',
-								'walker'         => new Marzeotti_Base_Walker_Nav_Menu(),
+								'walker'         => new AMB_Walker_Nav_Menu(),
 							)
 						);
 					endif;
@@ -67,7 +67,7 @@
 								'menu_id'        => 'button-menu',
 								'menu_class'     => 'nav__level button-menu',
 								'theme_location' => 'button-menu',
-								'walker'         => new Marzeotti_Base_Walker_Nav_Menu(),
+								'walker'         => new AMB_Walker_Nav_Menu(),
 								'depth'          => 1,
 							)
 						);

@@ -4,14 +4,14 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package Marzeotti_Base
+ * @package Advanced_Maps_Block
  */
 
-if ( ! function_exists( 'marzeotti_base_posted_on' ) ) :
+if ( ! function_exists( 'amb_posted_on' ) ) :
 	/**
 	 * Prints HTML with meta information for the current post-date/time.
 	 */
-	function marzeotti_base_posted_on() {
+	function amb_posted_on() {
 		$time_string = '<time class="published updated" datetime="%1$s">%2$s</time>';
 
 		$time_string = sprintf(
@@ -22,7 +22,7 @@ if ( ! function_exists( 'marzeotti_base_posted_on' ) ) :
 
 		$posted_on = sprintf(
 			/* translators: %s: post date. */
-			esc_html_x( 'Posted on %s', 'post date', 'marzeotti-base' ),
+			esc_html_x( 'Posted on %s', 'post date', 'advanced-maps-block' ),
 			$time_string
 		);
 
@@ -37,7 +37,7 @@ if ( ! function_exists( 'marzeotti_base_posted_on' ) ) :
 
 			$posted_on = sprintf(
 				/* translators: %s: post date. */
-				esc_html_x( 'Updated on %s', 'post date', 'marzeotti-base' ),
+				esc_html_x( 'Updated on %s', 'post date', 'advanced-maps-block' ),
 				$time_string
 			);
 		}
@@ -47,14 +47,14 @@ if ( ! function_exists( 'marzeotti_base_posted_on' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'marzeotti_base_posted_by' ) ) :
+if ( ! function_exists( 'amb_posted_by' ) ) :
 	/**
 	 * Prints HTML with meta information for the current author.
 	 */
-	function marzeotti_base_posted_by() {
+	function amb_posted_by() {
 		$byline = sprintf(
 			/* translators: %s: post author. */
-			esc_html_x( 'by %s', 'post author', 'marzeotti-base' ),
+			esc_html_x( 'by %s', 'post author', 'advanced-maps-block' ),
 			'<span class="author"><a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 		);
 

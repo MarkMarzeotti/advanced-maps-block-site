@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
  *
- * @package Marzeotti_Base
+ * @package Advanced_Maps_Block
  */
 
 get_header();
@@ -19,7 +19,7 @@ get_header();
 					<h1>
 						<?php
 						/* translators: %s: search query. */
-						printf( esc_html__( 'Search Results for: %s', 'marzeotti-base' ), '<span>' . get_search_query() . '</span>' );
+						printf( esc_html__( 'Search Results for: %s', 'advanced-maps-block' ), '<span>' . get_search_query() . '</span>' );
 						?>
 					</h1>
 				</header>

@@ -1,6 +1,6 @@
-# Marzeotti Base
+# Advanced Maps Block
 
-Base WordPress theme used by Mark Marzeotti. Based on Underscores with Bourbon Neat and Webpack bundling.
+A WordPress theme used by Mark Marzeotti. Based on Underscores with Bourbon Neat and Webpack bundling.
 
 In Terminal, navigate to theme and run `npm start` to start Webpack watching.
 

@@ -1,23 +1,21 @@
 <?php
 /**
- * Marzeotti Base functions and definitions
+ * Advanced Maps Block functions and definitions
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package Marzeotti_Base
+ * @package Advanced_Maps_Block
  */
 
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  */
-function marzeotti_base_setup() {
+function amb_setup() {
 	/*
 		* Make theme available for translation.
 		* Translations can be filed in the /languages/ directory.
-		* If you're building a theme based on Marzeotti Base, use a find and replace
-		* to change 'marzeotti-base' to the name of your theme in all the template files.
 		*/
-	load_theme_textdomain( 'marzeotti-base', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'advanced-maps-block', get_template_directory() . '/languages' );
 
 	/**
 	 * Add default posts and comments RSS feed links to head.
@@ -43,9 +41,9 @@ function marzeotti_base_setup() {
 		*/
 	register_nav_menus(
 		array(
-			'primary-menu' => esc_html__( 'Primary Menu', 'marzeotti-base' ),
-			'button-menu'  => esc_html__( 'Button Menu', 'marzeotti-base' ),
-			'footer-menu'  => esc_html__( 'Footer Menu', 'marzeotti-base' ),
+			'primary-menu' => esc_html__( 'Primary Menu', 'advanced-maps-block' ),
+			'button-menu'  => esc_html__( 'Button Menu', 'advanced-maps-block' ),
+			'footer-menu'  => esc_html__( 'Footer Menu', 'advanced-maps-block' ),
 		)
 	);
 
@@ -80,58 +78,58 @@ function marzeotti_base_setup() {
 	 */
 	add_theme_support( 'editor-color-palette', array(
 		array(
-			'name'  => __( 'Black', 'marzeotti-base' ),
+			'name'  => __( 'Black', 'advanced-maps-block' ),
 			'slug'  => 'black',
 			'color'	=> '#000000',
 		),
 		array(
-			'name'  => __( 'Ebony', 'marzeotti-base' ),
+			'name'  => __( 'Ebony', 'advanced-maps-block' ),
 			'slug'  => 'ebony',
 			'color' => '#131333',
 		),
 		array(
-			'name'  => __( 'Mirage', 'marzeotti-base' ),
+			'name'  => __( 'Mirage', 'advanced-maps-block' ),
 			'slug'  => 'mirage',
 			'color' => '#1c233c',
 		),
 		array(
-			'name'  => __( 'White', 'marzeotti-base' ),
+			'name'  => __( 'White', 'advanced-maps-block' ),
 			'slug'  => 'white',
 			'color' => '#ffffff',
 		),
 		array(
-			'name'  => __( 'Athens Gray', 'marzeotti-base' ),
+			'name'  => __( 'Athens Gray', 'advanced-maps-block' ),
 			'slug'  => 'athens-gray',
 			'color' => '#f9f9fa',
 		),
 		array(
-			'name'  => __( 'Gallery', 'marzeotti-base' ),
+			'name'  => __( 'Gallery', 'advanced-maps-block' ),
 			'slug'  => 'gallery',
 			'color' => '#eeeeee',
 		),
 		array(
-			'name'  => __( 'Cornflower Blue', 'marzeotti-base' ),
+			'name'  => __( 'Cornflower Blue', 'advanced-maps-block' ),
 			'slug'  => 'cornflower-blue',
 			'color' => '#7280ff',
 		),
 		array(
-			'name'  => __( 'Comet', 'marzeotti-base' ),
+			'name'  => __( 'Comet', 'advanced-maps-block' ),
 			'slug'  => 'comet',
 			'color' => '#626981',
 		),
 		array(
-			'name'  => __( 'Froly', 'marzeotti-base' ),
+			'name'  => __( 'Froly', 'advanced-maps-block' ),
 			'slug'  => 'froly',
 			'color' => '#f15f73',
 		),
 		array(
-			'name'  => __( 'Yellow Orange', 'marzeotti-base' ),
+			'name'  => __( 'Yellow Orange', 'advanced-maps-block' ),
 			'slug'  => 'yellow-orange',
 			'color' => '#feb633',
 		),
 	) );
 }
-add_action( 'after_setup_theme', 'marzeotti_base_setup' );
+add_action( 'after_setup_theme', 'amb_setup' );
 
 /**
  * Remove emoji styles.
@@ -144,67 +142,67 @@ remove_action( 'admin_print_styles', 'print_emoji_styles' );
 /**
  * Disable comment feeds.
  */
-function marzeotti_base_disable_comments_feed() {
+function amb_disable_comments_feed() {
 	/* translators: %s: homepage url */
-	wp_die( sprintf( __( 'No feed available, please visit the <a href="%s">homepage</a>!', 'marzeotti-base' ), esc_url( home_url( '/' ) ) ) ); // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
+	wp_die( sprintf( __( 'No feed available, please visit the <a href="%s">homepage</a>!', 'advanced-maps-block' ), esc_url( home_url( '/' ) ) ) ); // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
 }
-add_action( 'do_feed_rss2_comments', 'marzeotti_base_disable_comments_feed', 1 );
-add_action( 'do_feed_atom_comments', 'marzeotti_base_disable_comments_feed', 1 );
+add_action( 'do_feed_rss2_comments', 'amb_disable_comments_feed', 1 );
+add_action( 'do_feed_atom_comments', 'amb_disable_comments_feed', 1 );
 add_filter( 'feed_links_show_comments_feed', '__return_false' );
 
 /**
  * Enqueue front end scripts and styles.
  */
-function marzeotti_base_front_end_assets() {
-	wp_enqueue_style( 'marzeotti-base-style', get_stylesheet_directory_uri() . '/dist/css/style.css', array(), wp_get_theme()->get( 'Version' ) );
-	wp_enqueue_script( 'marzeotti-base-script', get_stylesheet_directory_uri() . '/dist/js/app.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true );
+function amb_front_end_assets() {
+	wp_enqueue_style( 'amb-style', get_stylesheet_directory_uri() . '/dist/css/style.css', array(), wp_get_theme()->get( 'Version' ) );
+	wp_enqueue_script( 'amb-script', get_stylesheet_directory_uri() . '/dist/js/app.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true );
 	wp_localize_script(
-		'marzeotti-base-script',
-		'marzeottiBaseGlobal',
+		'amb-script',
+		'ambGlobal',
 		array(
 			'ajaxUrl' => admin_url( 'admin-ajax.php' ),
-			'nonce'   => wp_create_nonce( 'marzeotti_base_more_post_ajax_nonce' ),
+			'nonce'   => wp_create_nonce( 'amb_more_post_ajax_nonce' ),
 		)
 	);
 }
-add_action( 'wp_enqueue_scripts', 'marzeotti_base_front_end_assets' );
+add_action( 'wp_enqueue_scripts', 'amb_front_end_assets' );
 
 /**
  * Enqueue admin scripts and styles.
  */
-function marzeotti_base_admin_assets() {
+function amb_admin_assets() {
 	wp_enqueue_style( 'admin-styles', get_stylesheet_directory_uri() . '/dist/css/admin.css', array(), wp_get_theme()->get( 'Version' ) );
 	wp_enqueue_script( 'admin-script', get_stylesheet_directory_uri() . '/dist/js/admin.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true );
 }
-add_action( 'admin_enqueue_scripts', 'marzeotti_base_admin_assets' );
+add_action( 'admin_enqueue_scripts', 'amb_admin_assets' );
 
 /**
  * Enqueue scripts and styles used on both front end and admin.
  */
-function marzeotti_base_assets() {
+function amb_assets() {
 	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Poppins:400,500,600,700|Rubik:500,700', array(), '20191005' );
 }
-add_action( 'wp_enqueue_scripts', 'marzeotti_base_assets' );
-add_action( 'admin_enqueue_scripts', 'marzeotti_base_assets' );
+add_action( 'wp_enqueue_scripts', 'amb_assets' );
+add_action( 'admin_enqueue_scripts', 'amb_assets' );
 
 /**
  * Dequeue block editor base styles.
  */
-function marzeotti_base_dequeue_styles() {
+function amb_dequeue_styles() {
 	wp_dequeue_style( 'wp-block-library' );
 }
-add_action( 'wp_print_styles', 'marzeotti_base_dequeue_styles', 100 );
+add_action( 'wp_print_styles', 'amb_dequeue_styles', 100 );
 
 /**
  * Add additional file extensions.
  *
  * @param array $mime_types An array of file types allowed.
  */
-function marzeotti_base_add_mime_types( $mime_types ) {
+function amb_add_mime_types( $mime_types ) {
 	$mime_types['svg'] = 'image/svg+xml';
 	return $mime_types;
 }
-add_filter( 'upload_mimes', 'marzeotti_base_add_mime_types', 1, 1 );
+add_filter( 'upload_mimes', 'amb_add_mime_types', 1, 1 );
 
 /**
  * Remove WordPress base menu classes.
@@ -212,36 +210,36 @@ add_filter( 'upload_mimes', 'marzeotti_base_add_mime_types', 1, 1 );
  * @param array  $classes An array of classes for this menu item.
  * @param object $item    The post object for the menu item.
  */
-function marzeotti_base_discard_menu_classes( $classes, $item ) {
+function amb_discard_menu_classes( $classes, $item ) {
 	return (array) get_post_meta( $item->ID, '_menu_item_classes', true );
 }
-add_filter( 'marzeotti_base_nav_menu_css_class', 'marzeotti_base_discard_menu_classes', 10, 2 );
+add_filter( 'amb_nav_menu_css_class', 'amb_discard_menu_classes', 10, 2 );
 
 /**
  * Set number of words to show in the excerpt.
  *
  * @param int $length Allowed length of the excerpt.
  */
-function marzeotti_base_excerpt_length( $length ) {
+function amb_excerpt_length( $length ) {
 	return 30;
 }
-add_filter( 'excerpt_length', 'marzeotti_base_excerpt_length', 999 );
+add_filter( 'excerpt_length', 'amb_excerpt_length', 999 );
 
 /**
  * Set characters to show after excerpt.
  *
  * @param string $more The text to display at the end of a generated excerpt.
  */
-function marzeotti_base_excerpt_more( $more ) {
+function amb_excerpt_more( $more ) {
 	return '...';
 }
-add_filter( 'excerpt_more', 'marzeotti_base_excerpt_more' );
+add_filter( 'excerpt_more', 'amb_excerpt_more' );
 
 /**
  * Call more posts on posts page.
  */
-function marzeotti_base_more_post_ajax() {
-	check_ajax_referer( 'marzeotti_base_more_post_ajax_nonce' );
+function amb_more_post_ajax() {
+	check_ajax_referer( 'amb_more_post_ajax_nonce' );
 	$return = wp_unslash( $_POST ); // phpcs:ignore WordPress.VIP.SuperGlobalInputUsage.AccessDetected
 	$offset = sanitize_key( $return['offset'] );
 	$ppp    = sanitize_key( $return['ppp'] );
@@ -259,8 +257,8 @@ function marzeotti_base_more_post_ajax() {
 	endwhile;
 	exit;
 }
-add_action( 'wp_ajax_marzeotti_base_more_post_ajax', 'marzeotti_base_more_post_ajax' );
-add_action( 'wp_ajax_nopriv_marzeotti_base_more_post_ajax', 'marzeotti_base_more_post_ajax' );
+add_action( 'wp_ajax_amb_more_post_ajax', 'amb_more_post_ajax' );
+add_action( 'wp_ajax_nopriv_amb_more_post_ajax', 'amb_more_post_ajax' );
 
 /**
  * Custom template tags for this theme.
@@ -275,4 +273,4 @@ require get_template_directory() . '/inc/template-functions.php';
 /**
  * A custom walker class to modify the navigation markup.
  */
-require get_template_directory() . '/inc/class-marzeotti-base-walker-nav-menu.php';
+require get_template_directory() . '/inc/class-amb-walker-nav-menu.php';

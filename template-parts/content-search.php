@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package Marzeotti_Base
+ * @package Advanced_Maps_Block
  */
 
 ?>
@@ -16,8 +16,8 @@
 		<?php if ( 'post' === get_post_type() ) : ?>
 		<div>
 			<?php
-			marzeotti_base_posted_on();
-			marzeotti_base_posted_by();
+			amb_posted_on();
+			amb_posted_by();
 			?>
 		</div>
 		<?php endif; ?>
