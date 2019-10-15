@@ -1,13 +1,13 @@
 .hero {
 	float: left;
-	margin-bottom: 60px;
+	margin-bottom: 80px;
 	padding: 40px 0;
 	position: relative;
 	width: 100%;
 	z-index: 0;
 
 	@include grid-media($medium-screen-grid) {
-		margin-bottom: 100px;
+		margin-bottom: 120px;
 		padding: 60px 0;
 	}
 
