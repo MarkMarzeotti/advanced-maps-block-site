@@ -10,20 +10,26 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>">
-	<header>
-		<?php the_title( '<h1>', '</h1>' ); ?>
-	</header>
+	<div class="hero">
+		<div class="container">
+			<header class="hero__title">
+				<?php the_title( '<h1>', '</h1>' ); ?>
+			</header>
+		</div>
+	</div>
 
-	<div>
-		<?php
-		the_content();
+	<div class="container">
+		<div class="content__main">
+			<?php
+			the_content();
 
-		wp_link_pages(
-			array(
-				'before' => '<div>' . esc_html__( 'Pages:', 'advanced-maps-block' ),
-				'after'  => '</div>',
-			)
-		);
-		?>
+			wp_link_pages(
+				array(
+					'before' => '<div>' . esc_html__( 'Pages:', 'advanced-maps-block' ),
+					'after'  => '</div>',
+				)
+			);
+			?>
+		</div>
 	</div>
 </article>

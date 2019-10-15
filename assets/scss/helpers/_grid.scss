@@ -1,6 +1,9 @@
+$small-gutter: 20px;
+$large-gutter: 40px;
+
 $neat-grid: (
 	columns: 4,
-	gutter: 20px
+	gutter: $small-gutter
 );
 
 $small-screen: 375px;
@@ -9,16 +12,16 @@ $large-screen: 1280px;
 
 $small-screen-grid: (
 	columns: 4,
-	gutter: 20px,
+	gutter: $small-gutter,
 	media: $small-screen
 );
 $medium-screen-grid: (
 	columns: 12,
-	gutter: 40px,
+	gutter: $large-gutter,
 	media: $medium-screen
 );
 $large-screen-grid: (
 	columns: 12,
-	gutter: 40px,
+	gutter: $large-gutter,
 	media: $large-screen
 );

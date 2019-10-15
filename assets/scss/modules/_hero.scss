@@ -1,21 +1,29 @@
 .hero {
 	float: left;
-	padding: 60px 0;
+	margin-bottom: 60px;
+	padding: 40px 0;
 	position: relative;
 	width: 100%;
 	z-index: 0;
 
+	@include grid-media($medium-screen-grid) {
+		margin-bottom: 100px;
+		padding: 60px 0;
+	}
+
 	&::before {
-		@include position(absolute, null -400px 0 null);
+		@include position(absolute, null -30% 0 null);
 		background-color: $color__mirage;
-		border-bottom-right-radius: 100vh;
+		border-bottom-right-radius: 400px;
+		border-top: 1000px solid $color__mirage;
 		content: '';
-		height: 200vh;
-		width: 200vw;
+		height: 400px;
+		min-width: 800px;
+		width: 130%;
 		z-index: 0;
 
 		@include grid-media($medium-screen-grid) {
-			right: -100px;
+			right: -10%;
 		}
 	}
 
@@ -25,11 +33,32 @@
 		flex-flow: row wrap;
 	}
 
+	&__title {
+		@include grid-column(3);
+		padding: 10px 0 20px;
+		z-index: 10;
+
+		@include grid-media($medium-screen-grid) {
+			@include grid-column(10);
+			@include grid-shift(1);
+			padding: 20px 0 30px;
+			text-align: center;
+		}
+
+		h1 {
+			margin: 0;
+		}
+
+		* {
+			color: $color__athens-gray;
+		}
+	}
+
 	&__content {
 		@include grid-column(4);
 		margin-bottom: 40px;
 		position: relative;
-		z-index: 100;
+		z-index: 10;
 
 		@include grid-media($medium-screen-grid) {
 			@include grid-column(6);
@@ -45,7 +74,7 @@
 	&__video {
 		@include grid-column(4);
 		position: relative;
-		z-index: 100;
+		z-index: 10;
 
 		@include grid-media($medium-screen-grid) {
 			@include grid-column(6);
@@ -64,7 +93,7 @@
 		padding-bottom: calc(62% / 100 * 120);
 		position: relative;
 		width: 120%;
-		z-index: 100;
+		z-index: 10;
 
 		@include grid-media($medium-screen-grid) {
 			width: 140%;
@@ -92,7 +121,7 @@
 		text-indent: -9999px;
 		transition: all 300ms ease;
 		width: 140px;
-		z-index: 100;
+		z-index: 20;
 
 		&::after {
 			@include position(absolute, 0 0 0 10px);

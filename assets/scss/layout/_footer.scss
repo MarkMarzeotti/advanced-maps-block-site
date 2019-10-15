@@ -1,6 +1,11 @@
 .footer {
 	background-color: $color__mirage;
+	margin-top: 60px;
 	padding: 46px 0 40px;
+
+	@include grid-media($medium-screen-grid) {
+		margin-top: 100px;
+	}
 
 	&__copyright {
 		@include grid-column(4);
